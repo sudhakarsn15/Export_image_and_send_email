@@ -5,7 +5,7 @@ export default function App() {
     function sendEmailFnc(event) {
         event.preventDefault();
         console.log('here');
-        html2canvas(document.querySelector('#capture')).then((canvas) => {
+        var capturedElement = html2canvas(document.querySelector('#capture')).then((canvas) => {
             document.body.appendChild(canvas);
         });
         Email.send({
@@ -15,7 +15,8 @@ export default function App() {
             To: 'sudhakarsn15@gmail.com',
             From: 'Sudhakarsn15@gmail.com',
             Subject: 'This is the subject',
-            Body: 'And this is the body',
+            Body: 'And this is the body'
+            capturedElement,
         }).then((message) => alert(message));
     }
 
